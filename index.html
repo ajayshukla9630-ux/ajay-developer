@@ -1,1 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajay Messenger Pro</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#eef2f7;
+padding:20px;
+}
+
+.container{
+max-width:550px;
+margin:auto;
+background:#fff;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.header{
+background:linear-gradient(135deg,#25D366,#128C7E);
+color:white;
+padding:25px;
+text-align:center;
+}
+
+.header h1{
+font-size:28px;
+}
+
+.header p{
+font-size:14px;
+opacity:.9;
+}
+
+.content{
+padding:20px;
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:600;
+}
+
+textarea{
+width:100%;
+height:180px;
+border:2px solid #e5e7eb;
+border-radius:12px;
+padding:15px;
+font-size:15px;
+resize:none;
+outline:none;
+}
+
+textarea:focus{
+border-color:#25D366;
+}
+
+.counter{
+text-align:right;
+margin-top:5px;
+color:#666;
+font-size:13px;
+}
+
+.number-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:10px;
+}
+
+.number-card{
+border:2px solid #ddd;
+padding:15px;
+border-radius:12px;
+cursor:pointer;
+text-align:center;
+font-weight:600;
+transition:.3s;
+}
+
+.number-card:hover{
+border-color:#25D366;
+}
+
+.number-card.active{
+background:#25D366;
+color:white;
+border-color:#25D366;
+}
+
+.btn{
+width:100%;
+padding:16px;
+margin-top:20px;
+border:none;
+border-radius:12px;
+background:#25D366;
+color:white;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#128C7E;
+}
+
+.footer{
+padding:15px;
+text-align:center;
+font-size:13px;
+color:#666;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<div class="header">
+<h1>Ajay Messenger Pro</h1>
+<p>Send WhatsApp Messages Easily</p>
+</div>
+
+<div class="content">
+
+<label>Message</label>
+
+<textarea id="message" maxlength="1000"
+placeholder="Type your message here..."></textarea>
+
+<div class="counter">
+<span id="count">0</span>/1000
+</div>
+
+<br>
+
+<label>Select Number</label>
+
+<div class="number-box">
+
+<div class="number-card active"
+onclick="selectNumber(this,'7067305467')">
+7067305467
+</div>
+
+<div class="number-card"
+onclick="selectNumber(this,'9203779980')">
+9203779980
+</div>
+
+</div>
+
+<button class="btn" onclick="sendMessage()">
+📨 Send WhatsApp Message
+</button>
+
+</div>
+
+<div class="footer">
+© 2026 Ajay Messenger Pro
+</div>
+
+</div>
+
+<script>
+
+let selectedNumber="7067305467";
+
+function selectNumber(el,num){
+
+document.querySelectorAll('.number-card')
+.forEach(card=>card.classList.remove('active'));
+
+el.classList.add('active');
+selectedNumber=num;
+
+}
+
+message.oninput=function(){
+count.innerText=this.value.length;
+}
+
+function sendMessage(){
+
+let msg=document.getElementById('message').value;
+
+if(msg.trim()==""){
+alert("Please enter a message");
+return;
+}
+
+window.open(
+`https://wa.me/91${selectedNumber}?text=${encodeURIComponent(msg)}`,
+'_blank'
+);
+
+}
+
+</script>
+
+</body>
+</html>
